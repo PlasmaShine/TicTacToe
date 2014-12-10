@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import Exceptions.InvalidBoardException;
 import Exceptions.InvalidNumberOfPlayersException;
 import Exceptions.InvalidPlayerException;
 
@@ -44,8 +45,8 @@ public class GameTests {
 	}
 	
 	@Before
-	public void setUp() {
-		board = new TicTacToeBoard();		
+	public void setUp() throws InvalidBoardException {
+		board = new TicTacToeBoard(3);		
 	}
 	
 	@Test
@@ -112,7 +113,7 @@ public class GameTests {
 	}
 
 	@Test
-	public void startingGameSetsStatusToStaterd() throws Exception{
+	public void startingGameSetsStatusToStarted() throws Exception{
 		createNewGame();
 		game.play();
 		assertEquals("Game should be strated", Game.GameStatus.STARTED, game.getStatus());	
